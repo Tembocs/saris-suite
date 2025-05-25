@@ -1,0 +1,18 @@
+services:
+  surreal-dev:
+    image: surrealdb/surrealdb:nightly                       # latest nightly binary :contentReference[oaicite:0]{index=0}
+    command: start --user root --pass root-dev memory        # in-memory mode :contentReference[oaicite:1]{index=1}
+    ports: ["8001:8000"]                                     # host 8001 → container 8000
+    healthcheck:                                             # use Surreal’s own CLI probe
+      test: ["CMD", "surreal", "isready",
+             "--endpoint", "http://localhost:8000"]          # exits 0 when HTTP listener is live :contentReference[oaicite:2]{index=2}
+      interval: 5s
+      start_period: 20s                                      # ignore early failures :contentReference[oaicite:3]{index=3}
+      retries: 5
+
+  surreal-prod:
+    image: surrealdb/surrealdb:latest                        # stable 2.x binary :contentReference[oaicite:4]{index=4}
+    command: start rocksdb:///data/surreal.db                # on-disk DB (RocksDB) :contentReference[oaicite:5]{index=5}
+    ports: ["8000:8000"]
+    volumes:
+      - ../data/surreal-prod:/data                           # host volume -> container /data
