@@ -1,0 +1,83 @@
+###############################################################################
+# 1 OS / Editor artefacts                                                    #
+###############################################################################
+# macOS / Windows metadata
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+# Editor settings (remove the ones you do want to share)
+.vscode/
+.idea/
+*.sublime*
+
+###############################################################################
+# 2 Logs, temporary files, backups                                           #
+###############################################################################
+*.log
+*.tmp
+*.bak
+*.swp
+*.stackdump
+*.orig
+
+###############################################################################
+# 3 Docker & container runtime                                               #
+###############################################################################
+# Bind-mounted SurrealDB volumes (runtime DB files)
+data/surreal-dev/
+data/surreal-prod/
+# PID files if you add custom scripts
+*.pid
+*.pid.lock
+
+###############################################################################
+# 4 SurrealQL migrations & exports                                           #
+###############################################################################
+# Keep your *.surql migration files; ignore large export dumps
+*.surql.dump
+*.surql.export
+
+###############################################################################
+# 5 Python (should you re-add FastAPI or scripts)                            #
+###############################################################################
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+build/
+dist/
+.venv/                 # Poetry / venv in-project folder
+
+###############################################################################
+# 6 Flutter / Dart (if UI comes back)                                        #
+###############################################################################
+.dart_tool/
+.pub/
+.pub-cache/
+build/
+android/.gradle/
+ios/Flutter/
+*.xcworkspace/
+*.xcuserstate
+
+###############################################################################
+# 7 Terraform & Ansible (future infra)                                       #
+###############################################################################
+infra/terraform/.terraform/
+*.tfstate*
+*.retry
+
+###############################################################################
+# 8 Node / JavaScript (if you later add tooling)                             #
+###############################################################################
+node_modules/
+npm-debug.log*
+yarn*.log
+
+###############################################################################
+# 9 GitHub Actions and CI artefacts                                          #
+###############################################################################
+/coverage/
+*.lcov
